@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.md.js"></script>
+    <script type="text/javascript" src="js/user.js">
+    
+    </script>
+    <title>新用户注册</title>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">西电大喇叭</a>
+    </div>
+
+    <div>
+        <ul class="nav navbar-nav pull-right">
+
+            <li><a href="index.html"><span class="glyphicon glyphicon-home"> 主页</span></a></li>
+
+            <li><a href="inform.html"><span class="glyphicon glyphicon-bullhorn"> 通知通告</span></a></li>
+
+            <li><a href="lost.html"><span class="glyphicon glyphicon-search"> 失物招领</span></a></li>
+
+            <li><a href="trade.html"><span class="glyphicon glyphicon-shopping-cart"> 二手交易</span></a></li>
+
+            <li><a href="job.html"><span class="glyphicon glyphicon-briefcase"> 兼职信息</span></a></li>
+
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-log-in"> 登录</span></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="col-lg-3"></div>
+
+    <div class="col-lg-6">
+        <br><br><br><br><br><br><br>
+        <div class="jumbotron">
+            <form name="loginform" method="POST" id="loginform" action="">
+
+                <div class="input-group">
+                    <span class="input-group-addon">账户</span>
+                    <input type="text" class="form-control input-lg" id="username" placeholder="请输入学号用于注册">
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-addon">密码</span>
+                    <input type="password" class="form-control input-lg" id="pwd" placeholder="请输入密码，长度为8-16位">
+                </div>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-addon">密码</span>
+                    <input type="password" class="form-control input-lg" id="repwd" placeholder="请输入密码，长度为8-16位">
+                </div>
+                <br>
+
+
+                <div>
+                    <button type="button" class="btn btn-lg btn-primary btn-block" onclick="register()">注 册</button>
+                </div>
+                <br>
+
+
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+
+
+</body>
+</html>
