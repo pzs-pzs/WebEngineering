@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		RegisterUser user = WebUtils.requestToBean(request, RegisterUser.class);
-		
+		System.out.println(user);
 		UserService service = new UserServiceImpl();
 		State state = new State();
 		Writer out = response.getWriter();

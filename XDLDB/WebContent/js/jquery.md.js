@@ -7,7 +7,7 @@
  *
  * Licensed under the MIT license:
  * http://creativecommons.org/licenses/MIT/
- * 
+ *
  * Based on
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
@@ -24,9 +24,9 @@
     'use strict';
 
     /*
-    * Add integers, wrapping at 2^32. This uses 16-bit operations internally
-    * to work around bugs in some JS interpreters.
-    */
+     * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+     * to work around bugs in some JS interpreters.
+     */
     function safe_add(x, y) {
         var lsw = (x & 0xFFFF) + (y & 0xFFFF),
             msw = (x >> 16) + (y >> 16) + (lsw >> 16);
@@ -34,15 +34,15 @@
     }
 
     /*
-    * Bitwise rotate a 32-bit number to the left.
-    */
+     * Bitwise rotate a 32-bit number to the left.
+     */
     function bit_rol(num, cnt) {
         return (num << cnt) | (num >>> (32 - cnt));
     }
 
     /*
-    * These functions implement the four basic operations the algorithm uses.
-    */
+     * These functions implement the four basic operations the algorithm uses.
+     */
     function md5_cmn(q, a, b, x, s, t) {
         return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
     }
@@ -60,8 +60,8 @@
     }
 
     /*
-    * Calculate the MD5 of an array of little-endian words, and a bit length.
-    */
+     * Calculate the MD5 of an array of little-endian words, and a bit length.
+     */
     function binl_md5(x, len) {
         /* append padding */
         x[len >> 5] |= 0x80 << ((len) % 32);
@@ -156,8 +156,8 @@
     }
 
     /*
-    * Convert an array of little-endian words to a string
-    */
+     * Convert an array of little-endian words to a string
+     */
     function binl2rstr(input) {
         var i,
             output = '';
@@ -168,9 +168,9 @@
     }
 
     /*
-    * Convert a raw string to an array of little-endian words
-    * Characters >255 have their high-byte silently ignored.
-    */
+     * Convert a raw string to an array of little-endian words
+     * Characters >255 have their high-byte silently ignored.
+     */
     function rstr2binl(input) {
         var i,
             output = [];
@@ -185,22 +185,22 @@
     }
 
     /*
-    * Calculate the MD5 of a raw string
-    */
+     * Calculate the MD5 of a raw string
+     */
     function rstr_md5(s) {
         return binl2rstr(binl_md5(rstr2binl(s), s.length * 8));
     }
 
     /*
-    * Calculate the HMAC-MD5, of a key and some data (raw strings)
-    */
+     * Calculate the HMAC-MD5, of a key and some data (raw strings)
+     */
     function rstr_hmac_md5(key, data) {
         var i,
             bkey = rstr2binl(key),
             ipad = [],
             opad = [],
             hash;
-        ipad[15] = opad[15] = undefined;                        
+        ipad[15] = opad[15] = undefined;
         if (bkey.length > 16) {
             bkey = binl_md5(bkey, key.length * 8);
         }
@@ -213,8 +213,8 @@
     }
 
     /*
-    * Convert a raw string to a hex string
-    */
+     * Convert a raw string to a hex string
+     */
     function rstr2hex(input) {
         var hex_tab = '0123456789abcdef',
             output = '',
@@ -229,15 +229,15 @@
     }
 
     /*
-    * Encode a string as utf-8
-    */
+     * Encode a string as utf-8
+     */
     function str2rstr_utf8(input) {
         return unescape(encodeURIComponent(input));
     }
 
     /*
-    * Take string arguments and return either raw or hex encoded strings
-    */
+     * Take string arguments and return either raw or hex encoded strings
+     */
     function raw_md5(s) {
         return rstr_md5(str2rstr_utf8(s));
     }
@@ -250,7 +250,7 @@
     function hex_hmac_md5(k, d) {
         return rstr2hex(raw_hmac_md5(k, d));
     }
-    
+
     $.md5 = function (string, key, raw) {
         if (!key) {
             if (!raw) {
@@ -265,5 +265,5 @@
             return raw_hmac_md5(key, string);
         }
     };
-    
+
 }(typeof jQuery === 'function' ? jQuery : this));

@@ -11,9 +11,9 @@ public class ConnDB {
 	private static String propFileName = "connDB.properties"; // 指定资源文件保存的位置
 	private static Properties prop = new Properties(); // 创建并实例化Properties对象的实例
 	private static String dbClassName = "com.mysql.jdbc.Driver"; // 定义保存数据库驱动的变量
-	private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/dlb";
+	private static String dbUrl = "jdbc:mysql://localhost:3306/dlb";
 	private static String db_user = "root";
-	private static String db_pwd = "1234";
+	private static String db_pwd = "123456";
     /*
      * 连接上数据库
      */
