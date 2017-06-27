@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="js/conserve.js"></script>
+    <script type="text/javascript" src="js/trade.js"></script>
+
+
+    <style type="text/css">
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            overflow-x:hidden;
+            margin-bottom: 20px;
+        }
+        .footer {
+            border: 1px solid #e5e5e5;
+            color: #777;
+            padding: 0px ;
+            background-color: #f5f5f5;
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+    <script>
+
+        window.onload=function () {
+            var today=new Date();
+            var d=today.getDate();
+            d=checkTime(d);
+            var y=today.getFullYear();
+            document.getElementById('data').innerHTML=d;
+            document.getElementById('data1').innerHTML=y;
+            //t=setTimeout(function(){startTime()},500);
+        }
+        function checkTime(i){
+            if (i<10){
+                i="0" + i;
+            }
+            return i;
+        }
+    </script>
+
+    <script>
+        window.onload = function ()
+        {
+
+            var s = getCookie("username");
+            if (s!=null&&s!=""){
+                document.getElementById("welcome").innerHTML = "欢迎 "+s;
+                var pos = document.getElementById("welcome");
+                var input = document.createElement("input");
+                input.type = "button";
+                input.value = "退出";
+                input.onclick= function () {
+                    quit();
+                }
+                //input.setAttribute("onclick","quit()");
+                input.setAttribute("class","btn btn-link");
+                pos.appendChild(input);
+            }
+        }
+    </script>
+
+    <title>失物招领</title>
+</head>
+<script type="text/javascript">
+
+
+</script>
+<body onload=a()>
+
+<div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
+    <img src="image/back3.jpg" height="100%" width="100%"/>
+</div>
+<nav class="navbar navbar-default" role="navigation">
+
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">西电大喇叭</a>
+    </div>
+
+    <div>
+        <p class="navbar-text navbar-left" id="welcome" ></p>
+    </div>
+
+    <div>
+        <ul class="nav navbar-nav pull-right">
+
+            <li><a href="index.html"><span class="glyphicon glyphicon-home"> 主页</span></a></li>
+
+            <li><a href="inform.html"><span class="glyphicon glyphicon-bullhorn"> 通知通告</span></a></li>
+
+            <li><a href="lost.html"><span class="glyphicon glyphicon-search"> 失物招领</span></a></li>
+
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-shopping-cart"> 二手交易</span></a></li>
+
+            <li><a href="job.html"><span class="glyphicon glyphicon-briefcase"> 兼职信息</span></a></li>
+
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"> 登录</span></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-md-8">
+        <div class="panel panel panel-primary" >
+            <div class="panel-heading"><p class="text-center" style="font-size: 20px">二手交易</p></div>
+            <ul class="list-group" id="ul1">
+            </ul>
+            <div class="row">
+                <div class="col-lg-offset-5">
+                    <span class="query_btn"></span>
+                    <ul class="pagination" id="flag">
+                        <li><a href="#1" id="1">1</a></li>
+                        <li><a href="#2" id="2">2</a></li>
+                        <li><a href="#3" id="3">3</a></li>
+                        <li><a href="#4" id="4">4</a></li>
+                        <li><a href="#5" id="5">5</a></li>
+                    </ul>
+                    <div class="loadPageDataSelector"></div>
+                </div>
+            </div>
+            <hr>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="container">
+                        <div class="row">
+                            <label class="col-sm-1 control-label"><p class="small">标题</p></label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="title" type="text" value=""><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <label class="col-sm-1 control-label"><p class="small">学号</p></label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="username" type="text" value=""><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <label class="col-sm-1 control-label"><p class="small">内容</p></label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="text" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-offset-9">
+                    <button type="button" class="btn btn-default" style="margin-bottom: 20px" onclick="conserve3()">提交</button><br/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="footer ">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active" id="data"></li>
+        <li class="active" id="data1"></li>
+    </ol>
+</div>
+</body>
+</html>
