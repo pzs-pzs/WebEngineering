@@ -16,7 +16,7 @@ function a()
             {
                 var oLi=document.createElement('a');
                 oLi.setAttribute("class","list-group-item");
-                oLi.href='show1.html'+'?id='+aData[i].id+'&&'+'page='+1;
+                oLi.href='show'+(i+1)+'.html'+'?id='+aData[i].id+'&&'+'page='+1;
                 oLi.id=i;
                 oLi.innerHTML='<strong><p style="color: #5cb85c">'+aData[i].title+'</p></strong><p class="text-right">'+aData[i].time+'</p>';
                 oUl.appendChild(oLi);
@@ -48,7 +48,7 @@ function a()
                     {
                         var oLi=document.createElement('a');
                         oLi.setAttribute("class","list-group-item");
-                        oLi.href='show1.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
+                        oLi.href='show'+(i+1)+'.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
                         oLi.id=i;
                         oLi.innerHTML='<strong><p style="color: #5cb85c">'+aData[i].title+'</p></strong><p class="text-right">'+aData[i].time+'</p>';
                         oUl.appendChild(oLi);
@@ -58,6 +58,10 @@ function a()
             });
         };
     }
+
+
+
+
 };
 
 

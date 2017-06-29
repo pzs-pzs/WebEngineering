@@ -31,7 +31,7 @@ function conserve() {
     $.ajax({
     	
         type:"POST",
-        url:"/XDLDB/StoreLostServlet",
+        url:"/XDLDB/StoreDataServlet",
         data:d,
         success: function conserve_return(data){
         result=JSON.parse(data)
@@ -43,92 +43,4 @@ function conserve() {
             }
         }
         })
-    location.reload();
-}
-
-function conserve2() {
-    // body...
-	var mydate=new Date().Format("yyyy-MM-dd hh:mm:ss");
-	
-    d={}
-    d['title']=document.getElementById('title').value
-    d['username']=document.getElementById('username').value
-    d['text']=document.getElementById('text').value
-    d['time']=mydate;
-    
-   
-    $.ajax({
-    	
-        type:"POST",
-        url:"/XDLDB/StoreInformServlet",
-        data:d,
-        success: function conserve_return(data){
-        result=JSON.parse(data)
-                    if (result['success'] == 1) {
-                    	alert("提交成功")
-            }
-            else {
-                alert("提交失败")
-            }
-        }
-        })
-    location.reload();
-}
-
-function conserve3() {
-    // body...
-	var mydate=new Date().Format("yyyy-MM-dd hh:mm:ss");
-	
-    d={}
-    d['title']=document.getElementById('title').value
-    d['username']=document.getElementById('username').value
-    d['text']=document.getElementById('text').value
-    d['time']=mydate;
-    
-   
-    $.ajax({
-    	
-        type:"POST",
-        url:"/XDLDB/StoreTradeServlet",
-        data:d,
-        success: function conserve_return(data){
-        result=JSON.parse(data)
-                    if (result['success'] == 1) {
-                    	alert("提交成功")
-            }
-            else {
-                alert("提交失败")
-            }
-        }
-        })
-    location.reload();
-}
-
-function conserve4() {
-    // body...
-	var mydate=new Date().Format("yyyy-MM-dd hh:mm:ss");
-	
-    d={}
-    d['title']=document.getElementById('title').value
-    d['username']=document.getElementById('username').value
-    d['text']=document.getElementById('text').value
-    d['time']=mydate;
-    
-   
-    $.ajax({
-    	
-        type:"POST",
-        url:"/XDLDB/StoreJobServlet",
-        data:d,
-        success: function conserve_return(data){
-        result=JSON.parse(data)
-                    if (result['success'] == 1) {
-                    	alert("提交成功")
-            }
-            else {
-                alert("提交失败")
-            }
-        }
-        })
-    location.reload();
 }

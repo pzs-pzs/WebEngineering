@@ -32,13 +32,13 @@
     </style>
     <script>
 
-        window.onload=function () {
+        function time() {
             var today=new Date();
             var d=today.getDate();
             d=checkTime(d);
             var y=today.getFullYear();
-            document.getElementById('data').innerHTML=d;
-            document.getElementById('data1').innerHTML=y;
+            document.getElementById('dataday').innerHTML= d;
+            document.getElementById('datayear').innerHTML= y;
             //t=setTimeout(function(){startTime()},500);
         }
         function checkTime(i){
@@ -57,7 +57,7 @@
 
 
 </script>
-<body onload=show5()>
+<body onload="show();time()">
 
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
     <img src="image/back5.jpg" height="100%" width="100%"/>

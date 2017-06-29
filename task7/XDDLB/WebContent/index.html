@@ -10,7 +10,6 @@
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     <style>
@@ -30,7 +29,7 @@
 
         .swiper-container {
             width: 100%;
-            height: 70%;
+            height: 50%;
         }
 
         .swiper-slide {
@@ -57,20 +56,10 @@
     <script>
         window.onload = function ()
         {
-
-            var s = getCookie("username");
-            if (s!=null&&s!=""){
-                document.getElementById("welcome").innerHTML = "欢迎 "+s;
-                var pos = document.getElementById("welcome");
-                var input = document.createElement("input");
-                input.type = "button";
-                input.value = "退出";
-                input.onclick= function () {
-                    quit();
-                }
-                //input.setAttribute("onclick","quit()");
-                input.setAttribute("class","btn btn-link");
-                pos.appendChild(input);
+            setCookie("username","asfasf");
+            var s=getCookie("username");
+            if(s!=null&&s!=" "){
+                document.getElementById("welcome").innerHTML="欢迎"+s;
             }
         }
     </script>
@@ -108,12 +97,12 @@
     </div>
 </nav>
 
-<div class="swiper-container" >
+<div class="swiper-container">
     <div class="swiper-wrapper">
-         <div class="swiper-slide"><img src="image/background%20(1).jpg" class="img-thumbnail" style="height: 100%; width: 100%"></div>
-        <div class="swiper-slide"><img src="image/background%20(11).jpg" class="img-thumbnail" style="height: 100%; width: 100%"></div>
-        <div class="swiper-slide"><img src="image/background%20(3).jpg" class="img-thumbnail" style="height: 100%; width: 100%"></div>
-        <div class="swiper-slide"><img src="image/background%20(7).jpg" class="img-thumbnail" style="height: 100%; width: 100%"></div>
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
     </div>
     <!-- Add zkm -->
     <div class="swiper-pagination"></div>
@@ -127,14 +116,8 @@
     });
 </script>
 <br>
-<br>
-
 
 <div class="container">
-    <p class="text-center" style="font-size: 80px; font-family: 华文彩云;color: #ac2925 ">厚德&nbsp;&nbsp;&nbsp; 求真&nbsp;&nbsp;&nbsp; 砺学&nbsp;&nbsp;&nbsp; 笃行</p>
-</div>
-
-<!-- <div class="container">
 
     <div class="col-lg-3">
         <h3>通知通告</h3>
@@ -153,17 +136,17 @@
             setTimeout("update_per_min()", 1000*60)     // 希望获得一个1分钟刷新
         }
         </script>
-        调用Ajax 希望获得 { content: url} 进行HTML DOM添加
+        <!-- 调用Ajax 希望获得 { content: url} 进行HTML DOM添加
              Java后台与数据库交互
              从数据库后台获得当前块最新的两条内容，和URL。
-             利用Ajax的Get方法获得数据写回
+             利用Ajax的Get方法获得数据写回 -->
 
         <p id="tg1"></p><br>
         <p id="tg2"></p>
         <a href="inform.html" target="_blank">More</a>
     </div>
 
-    注释
+    <!-- 注释
     <div class="col-lg-3">
         <h3>失物招领</h3>
         <p id="sw1"></p>
@@ -184,8 +167,8 @@
         <p id="jz2"></p>
         <a href="job.html" target="_blank">More</a>
     </div>
-    注释
-</div> -->
+    注释 -->
+</div>
 </body>
 
 </html>

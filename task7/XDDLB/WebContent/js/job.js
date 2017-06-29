@@ -17,7 +17,7 @@ function a()
                 var oLi=document.createElement('a');
                 oLi.setAttribute("class","list-group-item");
                 oLi.innerHTML='<strong>'+aData[i].title+'</strong><p class="text-right">'+aData[i].time+'</p>';
-                oLi.href='show4.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
+                oLi.href='show'+(i+1)+'.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
                 oLi.id=i;
                 oUl.appendChild(oLi);
 
@@ -50,7 +50,7 @@ function a()
                     {
                         var oLi=document.createElement('a');
                         oLi.setAttribute("class","list-group-item");
-                        oLi.href='show4.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
+                        oLi.href='show'+(i+1)+'.html'+'?id='+aData[i].id+'&&'+'page='+this.id;
                         oLi.id=i;
                         oLi.innerHTML='<strong>'+aData[i].title+'</strong><p class="text-right">'+aData[i].time+'</p>';
                         

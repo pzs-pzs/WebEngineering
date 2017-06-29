@@ -1,55 +1,81 @@
 /**
  * Created by Lan Lingxiang on 2017/6/6.
  */
+
 function setCookie(sName, sValue) {
-    var sCookie = sName + "=" + encodeURIComponent(sValue);
+    var sCookie = sName + "=" + encodeURIComponent(sValue)+";";
     document.cookie = sCookie;
 }
 
-// Get the value of a cookie by cookie name
 function getCookie(sName) {
+
     var sRE = "(?:; )?" + sName + "=([^;]*);?";
     var oRE = new RegExp(sRE);
+
     if (oRE.test(document.cookie)) {
         return decodeURIComponent(RegExp["$1"]);
     } else {
         return null;
     }
+
 }
 
-function quit() {
-    setCookie("username","");
-    window.location.href = "index.html";
+
+
+
+function clientSetCookies(){
+    //setCookie("ClientCookie1", "ClientTest1", new Date(Date.parse("May 4, 2009")), "/CookieTest", "http://localhost:6581/CookieApplication", true);
+    setCookie("ClientCookie1", "ClientTest1", new Date(Date.parse("May 4, 2009")), null, null, false);
+    setCookie("ClientCookie2", "ClientTest2", new Date(Date.parse("May 4, 2009")));
+    setCookie("ClientCookie3", "ClientTest3");
+
+    var sCookie = "The cookies created by client are:<br />{<br />&nbsp;&nbsp;Client Cookie1: " + getCookie("ClientCookie1")
+        + "<br />&nbsp;&nbsp;Client Cookie2: " + getCookie("ClientCookie2")
+        + "<br />&nbsp;&nbsp;Client Cookie3: " + getCookie("ClientCookie3")
+        + "<br />}";
+
+    document.getElementById('<% =divClient.ClientID%>').innerHTML = sCookie;
+    //deleteCookie("cookie1");
+    //deleteCookie("cookie2");
+    //deleteCookie("cookie3");
 }
+
+
+//get cookies which created by server
+function clientGetCookies(){
+    var sCookie = "The cookies read by client and created by server are:<br />" +
+        "{<br />&nbsp;&nbsp;Server Cookie1: " + getCookie("ServerCookie1")
+        + "<br />&nbsp;&nbsp;Server Cookie2: " + getCookie("ServerCookie2")
+        + "<br />&nbsp;&nbsp;Server Cookie3: " + getCookie("ServerCookie3")
+        + "<br />}";
+
+    document.getElementById('<% =divClient.ClientID%>').innerHTML = sCookie;
+}
+
+
 
 function login() {
     d = {}
     d['username'] = document.getElementById("username").value
     d['pwd'] = $.md5(document.getElementById("pwd").value)
+    $.ajax({
+        type: "POST",
+        url: "/XDLDB/LoginServlet",
+        data: d,
+        success: function login_return(data) {
+            result = JSON.parse(data)
+            if (result['success'] == 1) {
+                //alert("登录成功！欢迎来到西电大喇叭！")
+                // 记录
+                setCookie("username",document.getElementById("username").value)
 
-    var ck = getCookie("username");
-    	
-    if ( ck == "" || ck == null ) //判断当前无用户在线
-    {
-        $.ajax({
-            type: "POST",
-            url: "/XDLDB/LoginServlet",
-            data: d,
-            success: function login_return(data) {
-                result = JSON.parse(data)
-                if (result['success'] == 1) {
-                    //alert("登录成功！欢迎来到西电大喇叭！")
-                    // 记录
-                    setCookie("username", document.getElementById("username").value)
-
-                    window.location.href = "index.html"
-                }
-                else {
-                    alert("用户名密码错误！")
-                }
+                window.location.href = "index.html"
             }
-        });
-    }
+            if(document.getElementById("username").value==null){
+                alert("用户名密码错误！")
+            }
+        }
+    })
 }
 
 function register() {
